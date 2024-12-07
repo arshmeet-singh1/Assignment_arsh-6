@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+    <link rel="stylesheet" href="/css/main.css"> <!-- Compiled Tailwind CSS -->
+</head>
+
+<body>
+    <%- include('partials/navbar', {page: ''}) %>
+    <!-- Main Content -->
+    <div class="container mx-auto mt-8">
+        <div class="hero bg-base-200 min-h-[50vh]"> <!-- Hero component for 404 message -->
+            <div class="hero-content text-center">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">404 Not Found</h1>
+                    <p><%= message %></p> 
+                    <img src="/images/404-image.png" alt="404 Error Image" class="mx-auto"> <!-- Example image, change path as needed -->
+                    <a href="/" class="btn btn-primary mt-6">Go Back Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

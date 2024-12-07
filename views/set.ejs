@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= set.name %> - LEGO Set Details</title>
+    <!-- Internal CSS -->
+    <style>
+        /* Base Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            background-color: #e5e7eb;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .text-5xl {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+            font-weight: bold;
+        }
+
+        .set-image {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .set-details {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .quote {
+            margin-top: 20px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("https://quotable.io/random")
+                .then(response => response.json())
+                .then(data => {
+                    const quoteElement = document.getElementById("quote");
+                    quoteElement.innerHTML = `<p>"${data.content}"</p><p>- ${data.author}</p>`;
+                })
+                .catch(error => console.error('Error fetching quote:', error));
+        });
+    </script>
+</head>
+
+<body>
+    <%- include('partials/navbar', {page: '/lego/sets'}) %> <!-- Adjusted for correct page link -->
+    
+    <!-- Main Content -->
+    <div class="container mx-auto mt-8">
+        <div class="hero bg-base-200 min-h-[50vh]"> <!-- Hero section -->
+            <div class="hero-content text-center">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold"><%= set.name %></h1>
+                    <p class="py-6">Below, you will find detailed information about the set: <%= set.name %>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <!-- Left Column: Image -->
+            <div class="flex justify-center items-center">
+                <img src="<%= set.img_url %>" alt="<%= set.name %> Image" class="set-image">
+            </div>
+
+            <!-- Right Column: Set Details -->
+            <div class="flex flex-col justify-center">
+                <div class="set-details">
+                    <h2 class="text-3xl">Details</h2>
+                    <p><strong>Year Released:</strong> <%= set.year %></p>
+                    <p><strong>Theme:</strong> <%= set.Theme.name %></p> <!-- Corrected to access the theme name -->
+                    <p><strong>Number of Parts:</strong> <%= set.num_parts %></p>
+                    
+                    <div id="quote" class="quote"></div>
+
+                    <!-- Conditionally render the Edit button if the user is logged in -->
+                    <% if (session.user) { %>
+                        <a href="/lego/editSet/<%= set.set_num %>" class="btn btn-success mt-4">Edit Set: <%= set.name %></a>
+                    <% } %>
+
+                    <!-- Button to go back to the previous page -->
+                    <a href="#" onclick="history.back(); return false;" class="btn btn-primary mt-2">Return</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

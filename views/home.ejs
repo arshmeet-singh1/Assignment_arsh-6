@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lego Collection</title>
+    <link rel="stylesheet" href="/css/main.css"> <!-- Compiled Tailwind CSS -->
+     
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="/" class="btn">Home</a>
+        <a href="/about" class="btn">About</a> <!-- About button -->
+      </header>
+    <%- include('partials/navbar') %>     
+    <!-- Main Content -->
+<div class="container mx-auto mt-8">
+    <div class="hero bg-base-200 min-h-[50vh]"> <!-- Changed from min-h-screen to min-h-[50vh] -->
+        <div class="hero-content text-center">
+            <div class="max-w-md">
+                <h1 class="text-5xl font-bold">Discover something new!</h1>
+                <p class="py-6">
+                    "You are welcome here, hope you will enjoy guys, enjoy the website!."
+                </p>
+                <a href="/lego/sets" class="btn  btn-primary">Explore Now</a>            </div>
+        </div>
+    </div>
+ 
+        <!-- Responsive Grid of Lego Sets -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 ml-10">
+            <!-- Card 1 -->
+            <div class="card bg-white shadow-lg rounded-lg p-4">
+                <img src="https://cdn.rebrickable.com/media/sets/001-1.jpg" alt="Gears" class="w-full h-48 object-cover rounded-t-lg">
+                <h2 class="text-lg font-bold mt-2">Gears</h2>
+                <p class="text-gray-600">This set was released in America (USA/CAN) by Samsonite in 1965.</p>
+                <a href="/lego/sets/001-1" class="btn btn-primary mt-4">View Set</a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card bg-white shadow-lg rounded-lg p-4">
+                <img src="https://cdn.rebrickable.com/media/sets/002-1.jpg" alt="Town Mini-Figures" class="w-full h-48 object-cover rounded-t-lg">
+                <h2 class="text-lg font-bold mt-2">4.5V Samsonite Gears Motor Set</h2>
+                <p class="text-gray-600">This set was released in America (USA/CAN) by Samsonite in 1965. It was never released in Europe.</p>
+                <a href="/lego/sets/002-1" class="btn btn-primary mt-4">View Set</a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card bg-white shadow-lg rounded-lg p-4">
+                <img src="https://cdn.rebrickable.com/media/sets/002253963-1.jpg" alt="Castle 2 for 1 Bonus Offer" class="w-full h-48 object-cover rounded-t-lg">
+                <h2 class="text-lg font-bold mt-2">Legend of Chima: Corbeaux et Gorilles</h2>
+                <p class="text-gray-600">Title translates as: Ravens and Gorillas.<br> French: Corbeaux et Gorilles Polish: Kruki i Goryle</p>
+                <a href="/lego/sets/002253963-1" class="btn btn-primary mt-4">View Set</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
